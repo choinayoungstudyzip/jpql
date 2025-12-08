@@ -36,8 +36,8 @@ public class JpaMain4 {
             //String query = "select m from Member m join m.team t";
 
             // left outer join
-            //String query = "select m from Member m left join m.team t";
-            //String query = "select m from Member m left join m.team on t.name ='A'";
+            // String query = "select m from Member m left join m.team t";
+            // String query = "select m from Member m left join m.team on t.name ='A'";
 
             // 연관관계가 없는 엔티티 외부 조인 (inner, left 둘 다 가능)
             // String query = "select m from Member m left join Team t on m.username = t.name";

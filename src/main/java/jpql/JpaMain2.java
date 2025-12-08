@@ -45,7 +45,7 @@ public class JpaMain2 {
             System.out.println("age = " + resulto[1]);
 
             // 스칼라 타입 프로젝션
-            List<Object[]> resultList2 = em.createQuery("select m.username, m.age from Member m")
+            List<Object[]> resultList2 = em.createQuery("select m.username, m.age from Member m", Object[].class)
                     .getResultList();
 
             // 2. Object[] 로 조회
