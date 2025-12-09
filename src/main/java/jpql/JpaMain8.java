@@ -96,9 +96,25 @@ public class JpaMain8 {
             // 여러 테이블을 조인하여 엔티티가 가진 모양이 아닌 전혀 다른 결과를 내야 한다면 일반 조인을 사용한다.
             // 필요한 데이터들만 조회하여 DTO로 반환하는 것이 효과적
 
+            // Named 쿼리
             em.createNamedQuery("Member.findByUsername", Member.class)
                     .setParameter("username", "회원1")
                     .getResultList();
+
+            // 벌크 연산
+            // FLUSH 자동 호출
+            int resultCount = em.createQuery("update Member m set m.age = 20")
+                    .executeUpdate();
+
+            em.clear();
+            System.out.println("resultCount = " + resultCount);
+
+            Member findMember = em.find(Member.class, member1.getId());
+            System.out.println("findMember = " + findMember);
+
+            // 벌크 연산은 영속성 컨텍스트를 무시하고 DB에 직접 쿼리
+            // 벌크 연산을 먼저 실행
+            // 벌크 연산 수행 후 영속성 컨텍스트 초기화
 
             tx.commit();
         } catch (Exception e) {
