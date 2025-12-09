@@ -96,6 +96,10 @@ public class JpaMain8 {
             // 여러 테이블을 조인하여 엔티티가 가진 모양이 아닌 전혀 다른 결과를 내야 한다면 일반 조인을 사용한다.
             // 필요한 데이터들만 조회하여 DTO로 반환하는 것이 효과적
 
+            em.createNamedQuery("Member.findByUsername", Member.class)
+                    .setParameter("username", "회원1")
+                    .getResultList();
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
